@@ -25,9 +25,9 @@ class DB:
     def create_user(self, phone):
         add_user("", phone, "")
 
-
     def get_time_estimative(self):
         return 45
+
 
 if __name__ == '__main__':
     print("Querying items")
