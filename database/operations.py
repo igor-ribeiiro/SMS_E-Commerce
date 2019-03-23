@@ -176,7 +176,7 @@ if __name__ == '__main__':
     # all_users = get_users()
     # pprint(all_users)
 
-    # close_kart(phone)
+    close_kart(phone)
     # all_users = get_users()
     # pprint(all_users)
 

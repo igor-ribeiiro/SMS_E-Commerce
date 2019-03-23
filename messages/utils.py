@@ -6,11 +6,11 @@ from messages.db import DB
 
 url = "http://localhost:5000/sms"   
 
-gambi = 1
+gambi = 4
 
 body = "error"
 if gambi == 1:
-    body = "5 coca, 3 guarana, 7 refri"
+    body = "5 coca, 3 deterjente, 7 aros"
 if gambi == 2:
     body = "pegar na loja"
 if gambi == 3:

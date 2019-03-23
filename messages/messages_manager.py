@@ -23,7 +23,7 @@ class MessagesManager:
                 StringMathing.similar(self.client_message, "Pegar na loja") >= 0.5:
                 buscar_na_loja = True
 
-            self.db.update_para_buscar_na_loja(buscar_na_loja)
+            self.db.update_para_buscar_na_loja(self.client_number, buscar_na_loja)
             return MessageHandle.ask_for_address_msg()
         elif current_step == 3:
             self.db.update_address(self.client_number, self.client_message)
@@ -34,7 +34,8 @@ class MessagesManager:
 
             sms.send_sms(self.db.get_comerciante_phone_numer(), self.get_message_to_comerciante_4())
 
-            if self.db.get_para_buscar_na_loja():
+            self.db.close_kart(self.client_number)
+            if self.db.get_para_buscar_na_loja(self.client_number):
                 return MessageHandle.say_your_pedido_is_ready()
             else:
                 return MessageHandle.give_time_estimate(self.db.get_time_estimative())
@@ -42,9 +43,9 @@ class MessagesManager:
             print(f"Error: receive current_step = {current_step} not between 1 and 4")
 
     def get_message_to_comerciante_4(self):
-        client_name = self.db.get_client_name()
+        client_name = self.db.get_client_name(self.client_number)
         message = f"Compra realizada pelo cliente {client_name}.\n"
-        if self.db.get_para_buscar_na_loja():
+        if self.db.get_para_buscar_na_loja(self.client_number):
             message += "Cliente irá buscar na loja.\n"
         else:
             message += "Pedido para entregar no endereço: " + self.db.get_client_address(self.client_number) + ".\n"

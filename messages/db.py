@@ -1,5 +1,5 @@
 from database.operations import get_items, add_user, update_address, update_name, delete_item, get_user, add_kart, update_step, \
-    update_buscar_na_loja, get_buscar_na_loja
+    update_buscar_na_loja, get_buscar_na_loja, close_kart
 from pprint import pprint
 
 
@@ -10,6 +10,9 @@ class DB:
 
     def get_stock(self):
         return get_items()
+
+    def close_kart(self, phone):
+        close_kart(phone)
 
     def get_current_step(self, phone): # para dado phone
         try:
