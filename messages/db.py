@@ -28,12 +28,6 @@ class DB:
     def create_user(self, phone):
         add_user("", phone, "")
 
-    def get_address(self): #phone, address
-        return "Meu endereço"
-
-    def save_client_name(self, name): #phone, name
-        pass
-
     def get_para_buscar_na_loja(self): # Retorna True ou False
         return True
 
