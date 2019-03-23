@@ -2,8 +2,7 @@ import urllib.request
 import urllib.parse      
 
 url = "http://localhost:5000/sms"   
-params = {"Body": "body fuck",
-            "SmsMessageSid": "sid fuck",       
+params = {"Body": "5 coca, 3 guarana, 7 refri",
             "From": "from who?"   
 }      
 

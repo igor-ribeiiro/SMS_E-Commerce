@@ -1,6 +1,6 @@
-from message_handle import MessageHandle
-from string_mathing import StringMathing
-from item import Item
+from messages.message_handle import MessageHandle
+from messages.string_mathing import StringMathing
+from messages.item import Item
 
 
 class MessagesManager:
@@ -10,15 +10,9 @@ class MessagesManager:
 
     def get_message_to_be_sent(self):
         current_step = self.get_current_step()
-        print(f"On step = {current_step}.")
-        print(f"Client_number = {self.client_number} and client_message = {self.client_message}")
-        print("")
 
         if current_step == 1:
-            message = self.parse_message_from_step_1()
-            print("Message = ")
-            print(message)
-            return "Nothing"
+            return self.parse_message_from_step_1()
         elif current_step == 2:
             return MessageHandle.ask_for_address_msg()
         elif current_step == 3:
