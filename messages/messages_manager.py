@@ -23,10 +23,12 @@ class MessagesManager:
             self.db.save_client_name(self.client_message)
             return MessageHandle.ask_for_client_name()
         elif current_step == 4:
-            message = self.get_message_to_comerciante_4()
+            sms.send_sms(self.db.get_comerciante_phone_numer(), self.get_message_to_comerciante_4())
 
-            sms.send_sms(self.db.get_comerciante_phone_numer(), message)
-            return MessageHandle.give_time_estimate(self.db.get_time_estimative())
+            if self.db.get_para_buscar_na_loja():
+                return MessageHandle.say_your_pedido_is_ready()
+            else:
+                return MessageHandle.give_time_estimate(self.db.get_time_estimative())
         else:
             print(f"Error: receive current_step = {current_step} not between 1 and 4")
 

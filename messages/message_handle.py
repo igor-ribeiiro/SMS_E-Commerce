@@ -21,7 +21,11 @@ class MessageHandle:
 
     @staticmethod
     def give_time_estimate(time):
-        return f"Muito obrigado pelo pedido! Ele estará na sua casa em torno de {str(time)} minutos"
+        return f"Muito obrigado pelo pedido! Ele estará na sua casa em torno de {str(time)} minutos."
+
+    @staticmethod
+    def say_your_pedido_is_ready():
+        return f"Seu pedido foi confirmado! Você já pode passar na loja para retirar os produtos pedidos."
 
     def confirm_products_message(self):
         pass

@@ -34,7 +34,7 @@ def sms_reply():
     messages_manager = MessagesManager(from_number, sent_message)
     reply_message = messages_manager.get_message_to_be_sent()
 
-    reply_message += f", with fromNumber = {from_number}"
+    # reply_message += f", with fromNumber = {from_number}"
     print(f"Reply message = {reply_message}")
     return sms.reply_sms(reply_message)
 
