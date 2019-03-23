@@ -13,8 +13,11 @@ class DB:
     def get_current_step(self): #para dado phone
         return 4
 
-    def remove_product_from_db(self, id, name, qty): #nome, qty
-        delete_item("detergente", 3)
+    def save_carrinho(self, items):
+        pass
+
+    def remove_product_from_db(self, name, qty): #nome, qty
+        delete_item(name, qty)
 
     def update_address(self, phone, address): #phone, address
         update_address(phone, address)
