@@ -12,9 +12,13 @@ class DB:
         return get_items()
 
     def get_current_step(self, phone): # para dado phone
-        return update_step(phone)
+        try:
+            return update_step(phone)
+        except:
+            return 1
 
     def save_carrinho(self, phone, items, price): #items = ["string1", "string2", "string2"]
+        print(f"phone = {phone}")
         add_kart(phone, items, price)
 
     def remove_product_from_db(self, name, qty): #nome, qty
@@ -27,6 +31,7 @@ class DB:
         update_name(phone, name)
 
     def create_user(self, phone):
+        print(f"Phone = {phone} no create_user")
         add_user("", phone, "")
 
     def update_para_buscar_na_loja(self, phone, vai_buscar_na_loja): # 0 ou 1

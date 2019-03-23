@@ -19,7 +19,7 @@ if gambi == 4:
     body = "Igor Ribeiro"
 
 params = {"Body": body,
-            "From": "from who?"   
+            "From": "+5585999911065"   
 }      
 
 query_string = urllib.parse.urlencode(params)   

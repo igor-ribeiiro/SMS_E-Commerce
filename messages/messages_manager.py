@@ -15,7 +15,7 @@ class MessagesManager:
         current_step = self.db.get_current_step(self.client_number)
 
         if current_step == 1:
-            # self.db.create_user(self.client_number)
+            self.db.create_user(self.client_number)
             return self.parse_message_from_step_1()
         elif current_step == 2:
             buscar_na_loja = False
@@ -82,6 +82,7 @@ class MessagesManager:
 
             self.db.remove_product_from_db(closest_item_from_stock.name, qty)
 
+        print(f"PHONE = {self.client_number}")
         self.db.save_carrinho(self.client_number, items_str, total_price)
         return_message = return_message[:-2]
         return_message += f'.\n\nPreço total = {total_price:.2f} reais\n'

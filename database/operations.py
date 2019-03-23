@@ -19,7 +19,7 @@ def get_users():
 
 def add_user(name, phone, address):
     session = SQLManager().get_session()
-    user = User(name, phone, address)
+    user = User(name, address, phone)
     session.add(user)
     session.commit()
     session.close()
@@ -46,6 +46,7 @@ def add_kart(phone, price, order):
 
     user = session.query(User).filter_by(phone=phone).first()
 
+    print(f"user.phone = {phone}")
     kart = Kart(user.id, order, price)
     session.add(kart)
 
