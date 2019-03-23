@@ -10,17 +10,19 @@ class StringMathing:
         return SequenceMatcher(None, a, b).ratio()
 
     def get_closest_item_from_string(self, string):
-        best_item = self.stock_items[0].name
-        max_value = self.similar(best_item, string)
+        best_item = self.stock_items[0]
+        max_value = self.similar(best_item.name, string)
+        # print("In get_closest_item_from_string function")
 
         for item in self.stock_items:
             value = self.similar(item.name, string)
+            # print(f"item = {item.name} has value = {value}")
 
             if value > max_value:
                 max_value = value
                 best_item = item
 
-        return item
+        return best_item
 
 if __name__ == "__main__":
     a = "oioioi"
