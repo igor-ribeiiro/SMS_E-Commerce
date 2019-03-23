@@ -66,6 +66,17 @@ def close_kart(phone):
     session.commit()
     session.close()
 
+def _kart(phone):
+    session = SQLManager().get_session()
+
+    user = session.query(User).filter_by(phone=phone).first()
+
+    last_kart = session.query(Kart).filter_by(user_id=user.id, finished=0).order_by('date').first()
+    last_kart.finished = 1
+
+    session.commit()
+    session.close()
+
 
 def get_items():
     session = SQLManager().get_session()
