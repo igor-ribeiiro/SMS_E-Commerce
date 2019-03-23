@@ -2,7 +2,10 @@ from flask import Flask, request, jsonify
 from database.operations import get_items, add_user, update_address, update_name, delete_item
 from messages.sms import SMS
 from messages.messages_manager import MessagesManager
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 sms = SMS()
 
