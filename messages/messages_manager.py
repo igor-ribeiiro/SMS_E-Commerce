@@ -17,10 +17,10 @@ class MessagesManager:
         if current_step == 1:
             return self.parse_message_from_step_1()
         elif current_step == 2:
-            self.db.save_address(self.client_message)
+            self.db.update_address(self.client_number, self.client_message)
             return MessageHandle.ask_for_address_msg()
         elif current_step == 3:
-            self.db.save_client_name(self.client_message)
+            self.db.update_name(self.client_number, self.client_message)
             return MessageHandle.ask_for_client_name()
         elif current_step == 4:
             sms.send_sms(self.db.get_comerciante_phone_numer(), self.get_message_to_comerciante_4())
