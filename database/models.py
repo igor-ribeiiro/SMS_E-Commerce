@@ -72,7 +72,7 @@ class Kart(Base):
         self.user_id = user_id
         self.order = order
         self.price = price
-        self.step = 1
+        self.step = 2
         self.buscar_na_loja = 0
         self.finished = 0
         self.date = datetime.utcnow()
