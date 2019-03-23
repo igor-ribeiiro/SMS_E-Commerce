@@ -53,7 +53,7 @@ class DB:
         return 45
 
     def get_comerciante_phone_numer(self):
-        return '+5585999911065'
+        return '+5512996068508'
 
 
 if __name__ == '__main__':
