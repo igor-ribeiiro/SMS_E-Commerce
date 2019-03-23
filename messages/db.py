@@ -11,7 +11,7 @@ class DB:
         return get_items()
 
     def get_current_step(self): #para dado phone
-        return 4
+        return 1
 
     def save_carrinho(self, items):
         pass
@@ -27,6 +27,7 @@ class DB:
 
     def create_user(self, phone):
         add_user("", phone, "")
+
     def get_address(self): #phone, address
         return "Meu endereço"
 
