@@ -14,14 +14,18 @@ def main():
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
     """Respond to incoming messages with a friendly SMS."""
-    message = f"Replying to your message bitch"
+    sent_message = request.form['Body']
+    sms_sid = request.form['SmsMessageSid']
+    from_number = request.form['From']
 
-    print_str = f"request = {request}, form = {request.form}"
+    reply_message = f"Replying to your message bitch"
+
+    print_str = f"sent_message = {sent_message}, from_number = {from_number} and sid = {sms_sid}"
     print(print_str)
 
-    message += ', ' + print_str
+    reply_message += ', ' + print_str
 
-    return sms.reply_sms(message)
+    return sms.reply_sms(reply_message)
 
 if __name__ == "__main__":
     app.run(debug=True)
