@@ -19,8 +19,9 @@ def shelf():
     print("gogo")
     try:
         all_items = get_items()
-        print(all_items)
         items = [item.as_dict() for item in all_items]
+        items.sort(key=lambda item: item["name"])
+
         return jsonify(result=items)
     except Exception as E:
         print(E)
