@@ -1,4 +1,4 @@
-class message:
+class Message:
     def __init__(self, client_name, items, address=None):
         self.client_name = client_name
         self.items = items
