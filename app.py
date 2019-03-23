@@ -1,6 +1,5 @@
 from flask import Flask, request
 from messages.sms import SMS
-from messages.message import Message
 app = Flask(__name__)
 
 sms = SMS()
@@ -15,12 +14,11 @@ def main():
 def sms_reply():
     """Respond to incoming messages with a friendly SMS."""
     sent_message = request.form['Body']
-    sms_sid = request.form['SmsMessageSid']
     from_number = request.form['From']
 
     reply_message = f"Replying to your message bitch"
 
-    print_str = f"sent_message = {sent_message}, from_number = {from_number} and sid = {sms_sid}"
+    print_str = f"sent_message = {sent_message} and from_number = {from_number}"
     print(print_str)
 
     reply_message += ', ' + print_str
