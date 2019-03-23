@@ -90,8 +90,8 @@ if __name__ == '__main__':
     # pprint(all_users)
     #
     # update_address(phone, "av bagulho eh loko")
-    # all_users = get_users()
-    # pprint(all_users)
+    all_users = get_users()
+    pprint(all_users)
 
     print("Adding kart to user")
     add_kart(phone, 123, ["2 unit item cartas", "3 unit item z"])

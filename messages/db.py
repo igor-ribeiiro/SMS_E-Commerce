@@ -11,7 +11,7 @@ class DB:
         return get_items()
 
     def get_current_step(self): #para dado phone
-        return 1
+        return 2
 
     def save_carrinho(self, phone, items, price): #items = ["string1", "string2", "string2"]
         add_kart(phone, items, price)
@@ -27,6 +27,9 @@ class DB:
 
     def create_user(self, phone):
         add_user("", phone, "")
+
+    def update_para_buscar_na_loja(self, vai_buscar_na_loja): # Retorna True ou False
+        pass
 
     def get_para_buscar_na_loja(self): # Retorna True ou False
         return True
