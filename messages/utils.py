@@ -1,8 +1,24 @@
 import urllib.request   
 import urllib.parse      
 
+from messages.db import DB
+
+
 url = "http://localhost:5000/sms"   
-params = {"Body": "5 coca, 3 guarana, 7 refri",
+
+gambi = 1
+
+body = "error"
+if gambi == 1:
+    body = "5 coca, 3 guarana, 7 refri"
+if gambi == 2:
+    body = "pegar na loja"
+if gambi == 3:
+    body = "Rua H8A 121"
+if gambi == 4:
+    body = "Igor Ribeiro"
+
+params = {"Body": body,
             "From": "from who?"   
 }      
 
