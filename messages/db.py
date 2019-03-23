@@ -1,4 +1,4 @@
-from database.operations import get_items, add_user, update_address, update_name, delete_item, get_user
+from database.operations import get_items, add_user, update_address, update_name, delete_item, get_user, add_kart
 from pprint import pprint
 
 
@@ -13,8 +13,8 @@ class DB:
     def get_current_step(self): #para dado phone
         return 1
 
-    def save_carrinho(self, items):
-        pass
+    def save_carrinho(self, phone, items, price): #items = ["string1", "string2", "string2"]
+        add_kart(phone, items, price)
 
     def remove_product_from_db(self, name, qty): #nome, qty
         delete_item(name, qty)

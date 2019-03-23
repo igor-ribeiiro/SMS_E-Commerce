@@ -41,12 +41,12 @@ def update_address(phone, address):
     session.close()
 
 
-def add_kart(phone, name, order):
+def add_kart(phone, price, order):
     session = SQLManager().get_session()
 
-    user = session.query(User).filter_by(address=phone).first()
+    user = session.query(User).filter_by(phone=phone).first()
 
-    kart = Kart(name, user.id, order)
+    kart = Kart(user.id, order, price)
     session.add(kart)
 
     user.karts.append(kart)
@@ -80,11 +80,11 @@ def add_item(name, price, qty):
 
 if __name__ == '__main__':
     # print("Querying users")
-    # phone = "01012093"
-    # # add_user("Igor Bragaia", "Rua H8A, apt 121", phone)
-    # all_users = get_users()
-    # pprint(all_users)
-    #
+    phone = "01012093"
+    add_user("Igor Bragaia", "Rua H8A, apt 121", phone)
+    all_users = get_users()
+    pprint(all_users)
+
     # update_name(phone, "aha")
     # all_users = get_users()
     # pprint(all_users)
@@ -93,15 +93,17 @@ if __name__ == '__main__':
     # all_users = get_users()
     # pprint(all_users)
 
-    # print("Adding kart to user")
-    # add_kart("+55 19 97103-7086", "kart dono", ["2 unit item cartas", "3 unit item z"])
+    print("Adding kart to user")
+    add_kart(phone, 123, ["2 unit item cartas", "3 unit item z"])
+    all_users = get_users()
+    pprint(all_users)
 
-    print("Querying items")
+    # print("Querying items")
     # add_item("random123", 50, 9)
     # all_items = get_items()
     # pprint(all_items)
     # delete_item("random123", 3)
-    all_items = get_items()
-    print(all_items)
-    items = [item.as_dict() for item in all_items]
-    print(items)
+    # all_items = get_items()
+    # print(all_items)
+    # items = [item.as_dict() for item in all_items]
+    # print(items)

@@ -2,6 +2,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, Unicode,  DateTime, ForeignKey, ARRAY
 from sqlalchemy.orm import relationship
+from datetime import datetime
 
 
 Base = declarative_base()
@@ -59,20 +60,29 @@ class Item(Base):
 class Kart(Base):
     __tablename__ = "kart"
     id = Column(Integer, primary_key=True)
-    name = Column(Unicode(), unique=False, nullable=False)
     order = Column(ARRAY(Unicode()), unique=False, nullable=False)
+    price = Column(Integer(), unique=False, nullable=False)
+    step = Column(Integer(), unique=False, nullable=False)
+    buscar_na_loja = Column(Integer(), unique=False, nullable=False)
+    finished = Column(Integer(), unique=False, nullable=False)
+    date = Column(DateTime(timezone=True), unique=False, nullable=True)
     user_id = Column(Integer, ForeignKey('user.id'))
 
-    def __init__(self, name, user_id, order):
-        self.name = name
+    def __init__(self, user_id, order, price):
         self.user_id = user_id
         self.order = order
+        self.price = price
+        self.step = 0
+        self.buscar_na_loja = 0
+        self.finished = 0
+        self.date = datetime.utcnow()
 
     def __repr__(self):
-        return "customer {0}, kart {1}".format(self.user_id, self.name)
+        return "customer {0}, kart {1}".format(self.user_id, self.order)
 
     def as_dict(self):
         return {
-            "kart": self.name,
-            "order": self.order
+            "order": self.order,
+            "price": self.price,
+            "date": self.date,
         }
