@@ -58,6 +58,7 @@ class MessagesManager:
 
         return_message = "\n"
         items = []
+        items_str = []
         total_price = 0
 
         for client_item in client_items:
@@ -69,6 +70,11 @@ class MessagesManager:
             closest_item_from_stock = string_mathing.get_closest_item_from_string(name)
             items.append(closest_item_from_stock)
 
+            if qty == 1:
+                items_str.append(str(qty) + " unidade de " + closest_item_from_stock.name)
+            else:
+                items_str.append(str(qty) + " unidades de " + closest_item_from_stock.name)
+
             price = qty*closest_item_from_stock.price
             total_price += price
             price_str = f', preço = {price:.2f} confirmado,\n'
@@ -76,10 +82,10 @@ class MessagesManager:
 
             self.db.remove_product_from_db(closest_item_from_stock.name, qty)
 
-        self.db.save_carrinho(items)
+        self.db.save_carrinho(self.client_number, items_str, total_price)
         return_message = return_message[:-2]
         return_message += f'.\n\nPreço total = {total_price:.2f} reais\n'
-        return_message += "Deixa separado ou entrega em casa?"
+        return_message += "Pegar na loja ou entrega em casa?"
         return return_message
 
 

@@ -10,7 +10,7 @@ class DB:
     def get_stock(self):
         return get_items()
 
-    def get_current_step(self): #para dado phone
+    def get_current_step(self): # para dado phone
         return 1
 
     def save_carrinho(self, phone, items, price): #items = ["string1", "string2", "string2"]
