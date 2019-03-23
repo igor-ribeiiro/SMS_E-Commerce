@@ -20,8 +20,7 @@ def shelf():
     try:
         all_items = get_items()
         items = [item.as_dict() for item in all_items]
-        items.sort(key=lambda item: item["name"])
-
+        items.sort(key=lambda item: item["descricao"])
         return jsonify(result=items)
     except Exception as E:
         print(E)
