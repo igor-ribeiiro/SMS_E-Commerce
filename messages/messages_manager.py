@@ -28,6 +28,8 @@ class MessagesManager:
             if StringMathing.similar(self.client_message, "loja") >= 0.5 or \
                 StringMathing.similar(self.client_message, "Pegar na loja") >= 0.5:
                 buscar_na_loja = 1
+                self.db.get_current_step(self.client_number)
+                return MessageHandle.ask_for_client_name()
 
             self.db.update_para_buscar_na_loja(self.client_number, buscar_na_loja)
             return MessageHandle.ask_for_address_msg()
@@ -40,10 +42,11 @@ class MessagesManager:
 
             sms.send_sms(self.db.get_comerciante_phone_numer(), self.get_message_to_comerciante_4())
 
-            self.db.close_kart(self.client_number)
             if self.db.get_para_buscar_na_loja(self.client_number):
+                self.db.close_kart(self.client_number)
                 return MessageHandle.say_your_pedido_is_ready()
             else:
+                self.db.close_kart(self.client_number)
                 return MessageHandle.give_time_estimate(self.db.get_time_estimative())
         else:
             self.db.close_kart(self.client_number)

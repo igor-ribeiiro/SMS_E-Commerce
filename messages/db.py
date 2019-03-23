@@ -41,7 +41,7 @@ class DB:
         update_buscar_na_loja(phone, vai_buscar_na_loja)
 
     def get_para_buscar_na_loja(self, phone): # 0 ou 1
-        return get_buscar_na_loja(phone)
+        return not get_buscar_na_loja(phone)
 
     def get_client_name(self, phone):
         return get_user(phone).name
