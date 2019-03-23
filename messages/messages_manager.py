@@ -38,7 +38,7 @@ class MessagesManager:
         stock = self.get_stock()
         string_mathing = StringMathing(stock)
 
-        return_message = ""
+        return_message = "\n"
         items = []
         for client_item in client_items:
             client_item = client_item.lstrip()
@@ -54,7 +54,7 @@ class MessagesManager:
             # print("")
 
             items.append(closest_item_from_stock)
-            return_message += str(qtd) + " " + closest_item_from_stock.name + ' confirmado, '
+            return_message += str(qtd) + " " + closest_item_from_stock.name + ' confirmado,\n'
 
         return_message = return_message[:-2]
         return_message += f'.\n\nPreço total = {(MessageHandle.get_total_price(items)):.2f} reais\n'
