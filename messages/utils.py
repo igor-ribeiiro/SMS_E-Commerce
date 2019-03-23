@@ -12,7 +12,7 @@ body = "error"
 if gambi == 1:
     body = "5 coca, 3 deterjente, 7 aros"
 if gambi == 2:
-    body = "pegar na loja"
+    body = "Pegar na loja"
 if gambi == 3:
     body = "Rua H8A 121"
 if gambi == 4:

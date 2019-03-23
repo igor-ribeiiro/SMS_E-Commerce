@@ -24,10 +24,10 @@ class MessagesManager:
             self.db.create_user(self.client_number)
             return self.parse_message_from_step_1()
         elif current_step == 2:
-            buscar_na_loja = 0
+            buscar_na_loja = 1
             if StringMathing.similar(self.client_message, "loja") >= 0.5 or \
                 StringMathing.similar(self.client_message, "Pegar na loja") >= 0.5:
-                buscar_na_loja = 1
+                buscar_na_loja = 0
                 self.db.get_current_step(self.client_number)
                 return MessageHandle.ask_for_client_name()
 
