@@ -103,4 +103,6 @@ if __name__ == '__main__':
     # pprint(all_items)
     # delete_item("random123", 3)
     all_items = get_items()
-    pprint(all_items)
+    print(all_items)
+    items = [item.as_dict() for item in all_items]
+    print(items)
