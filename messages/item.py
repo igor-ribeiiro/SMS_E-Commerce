@@ -1,9 +1,9 @@
 class Item:
-    def __init__(self, name, qtd, price, id=None):
+    def __init__(self, name, qty, price, id=None):
         self.name =name
-        self.qtd = qtd
+        self.qty = qty
         self.price = price
         self.id = id
 
     def get_total_price(self):
-        return self.price*self.qtd
+        return self.price*self.qty

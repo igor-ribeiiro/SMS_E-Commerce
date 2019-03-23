@@ -37,18 +37,18 @@ class MessagesManager:
         for client_item in client_items:
             client_item = client_item.lstrip()
             item = client_item.split(" ")
-            qtd = int(item[0])
+            qty = int(item[0])
             name = item[1]
 
             closest_item_from_stock = string_mathing.get_closest_item_from_string(name)
             items.append(closest_item_from_stock)
 
-            price = qtd*closest_item_from_stock.price
+            price = qty*closest_item_from_stock.price
             total_price += price
             price_str = f', preço = {price:.2f} confirmado,\n'
-            return_message += f'{qtd} '+ closest_item_from_stock.name + price_str
+            return_message += f'{qty} '+ closest_item_from_stock.name + price_str
 
-            self.db.remove_product_from_db(closest_item_from_stock.id, qtd)
+            self.db.remove_product_from_db(closest_item_from_stock.id, qty)
 
         return_message = return_message[:-2]
         return_message += f'.\n\nPreço total = {total_price:.2f} reais\n'

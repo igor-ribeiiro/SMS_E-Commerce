@@ -13,7 +13,7 @@ class DB:
     def get_current_step(self): #para dado phone
         return 1
 
-    def remove_product_from_db(self, id, qtd): #nome, qtd
+    def remove_product_from_db(self, id, qty): #nome, qty
         pass
 
     def save_address(self, address): #phone, address
