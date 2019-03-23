@@ -1,4 +1,5 @@
-from database.operations import get_items, add_user, update_address, update_name, delete_item, get_user, add_kart
+from database.operations import get_items, add_user, update_address, update_name, delete_item, get_user, add_kart, update_step, \
+    update_buscar_na_loja, get_buscar_na_loja
 from pprint import pprint
 
 
@@ -10,8 +11,8 @@ class DB:
     def get_stock(self):
         return get_items()
 
-    def get_current_step(self): # para dado phone
-        return 1
+    def get_current_step(self, phone): # para dado phone
+        return update_step(phone)
 
     def save_carrinho(self, phone, items, price): #items = ["string1", "string2", "string2"]
         add_kart(phone, items, price)
@@ -28,11 +29,11 @@ class DB:
     def create_user(self, phone):
         add_user("", phone, "")
 
-    def update_para_buscar_na_loja(self, vai_buscar_na_loja): # Retorna True ou False
-        pass
+    def update_para_buscar_na_loja(self, phone, vai_buscar_na_loja): # 0 ou 1
+        update_buscar_na_loja(phone, vai_buscar_na_loja)
 
-    def get_para_buscar_na_loja(self): # Retorna True ou False
-        return True
+    def get_para_buscar_na_loja(self, phone): # 0 ou 1
+        return get_buscar_na_loja(phone)
 
     def get_client_name(self, phone):
         return get_user(phone).name

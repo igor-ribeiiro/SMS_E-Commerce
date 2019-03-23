@@ -79,16 +79,33 @@ def update_buscar_na_loja(phone, buscar_na_loja):
     session.close()
 
 
+def get_buscar_na_loja(phone):
+    session = SQLManager().get_session()
+
+    user = session.query(User).filter_by(phone=phone).first()
+
+    last_kart = session.query(Kart).filter_by(user_id=user.id, finished=0).order_by('date').first()
+    buscar_na_loja = last_kart.buscar_na_loja
+
+    session.commit()
+    session.close()
+
+    return buscar_na_loja
+
+
 def update_step(phone):
     session = SQLManager().get_session()
 
     user = session.query(User).filter_by(phone=phone).first()
 
     last_kart = session.query(Kart).filter_by(user_id=user.id, finished=0).order_by('date').first()
+    current_step = int(last_kart.step)
     last_kart.step += 1
 
     session.commit()
     session.close()
+
+    return current_step
 
 
 def get_items():
@@ -134,7 +151,7 @@ if __name__ == '__main__':
     all_users = get_users()
     pprint(all_users)
 
-    update_step(phone)
+    step = update_step(phone)
     all_users = get_users()
     pprint(all_users)
 
