@@ -2,3 +2,4 @@ twilio==6.25.2
 flask==1.0.2
 gunicorn==19.4.5
 sqlalchemy
+psycopg2
