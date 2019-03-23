@@ -40,6 +40,7 @@ class MessagesManager:
             else:
                 return MessageHandle.give_time_estimate(self.db.get_time_estimative())
         else:
+            self.db.close_kart(self.client_number)
             print(f"Error: receive current_step = {current_step} not between 1 and 4")
 
     def get_message_to_comerciante_4(self):
