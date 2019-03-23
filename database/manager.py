@@ -19,6 +19,11 @@ class SQLManager:
         session = db_session()
         return session
 
+    def deleteAll(self):
+        Base.metadata.drop_all(self.engine)
+
 
 if __name__ == '__main__':
-    SQLManager().create_all_tables()
+    sqlmanager = SQLManager()
+    sqlmanager.deleteAll()
+    sqlmanager.create_all_tables()
