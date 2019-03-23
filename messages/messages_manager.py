@@ -1,12 +1,14 @@
 from messages.message_handle import MessageHandle
 from messages.string_mathing import StringMathing
 from messages.item import Item
+from messages.db import DB
 
 
 class MessagesManager:
     def __init__(self, client_number, client_message):
         self.client_number = client_number
         self.client_message = client_message
+        self.db = DB(client_number, client_message)
 
     def get_message_to_be_sent(self):
         current_step = self.get_current_step()
@@ -14,8 +16,10 @@ class MessagesManager:
         if current_step == 1:
             return self.parse_message_from_step_1()
         elif current_step == 2:
+            self.db.save_address(self.client_message)
             return MessageHandle.ask_for_address_msg()
         elif current_step == 3:
+            self.db.save_client_name(self.client_message)
             return MessageHandle.ask_for_client_name()
         elif current_step == 4:
             return MessageHandle.give_time_estimate(self.client_message)
@@ -44,17 +48,11 @@ class MessagesManager:
 
         for client_item in client_items:
             client_item = client_item.lstrip()
-            # print(f"On client_item = {client_item}")
             item = client_item.split(" ")
             qtd = int(item[0])
             name = item[1]
 
-            # print(f"Reading name = {name} and qtd = {qtd}")
-
             closest_item_from_stock = string_mathing.get_closest_item_from_string(name)
-            # print(f"Closest from stock = {closest_item_from_stock.name}")
-            # print("")
-
             items.append(closest_item_from_stock)
 
             price = qtd*closest_item_from_stock.price
@@ -62,10 +60,13 @@ class MessagesManager:
             price_str = f', preço = {price:.2f} confirmado,\n'
             return_message += f'{qtd} '+ closest_item_from_stock.name + price_str
 
+            self.db.remove_product_from_db(closest_item_from_stock.id, qtd)
+
         return_message = return_message[:-2]
         return_message += f'.\n\nPreço total = {total_price:.2f} reais\n'
         return_message += "Deixa separado ou entrega em casa?"
         return return_message
+
 
 if __name__ == "__main__":
     message = "5 coca, 3 guarana, 7 refri"
