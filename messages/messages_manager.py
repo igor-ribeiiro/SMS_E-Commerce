@@ -38,7 +38,7 @@ class MessagesManager:
         if self.db.get_para_buscar_na_loja():
             message += "Cliente irá buscar na loja.\n"
         else:
-            message += "Pedido para entregar no endereço: " + self.db.get_address() + ".\n"
+            message += "Pedido para entregar no endereço: " + self.db.get_client_address(self.client_number) + ".\n"
         message += "Favor, consultar plataforma virtual para ver os produtos pedidos."
         return message
 
