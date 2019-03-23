@@ -1,15 +1,23 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from database.operations import get_items, add_user, update_address, update_name, delete_item
 from messages.sms import SMS
 from messages.messages_manager import MessagesManager
-
 app = Flask(__name__)
 
 sms = SMS()
 
-
 @app.route("/")
 def main():
     return "what's up nigga"
+
+
+@app.route("/shelf")
+def shelf():
+    try:
+        items = [item.as_dict() for item in get_items()]
+        return jsonify(result=items)
+    except:
+        return jsonify(result=[])
 
 
 @app.route("/sms", methods=['POST'])

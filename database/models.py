@@ -48,6 +48,13 @@ class Item(Base):
     def __repr__(self):
         return "name {0}, price {1}, qty {2}".format(self.name, self.price, self.qty)
 
+    def as_dict(self):
+        return {
+            "preco": self.price,
+            "descricao": self.name,
+            "quantidade": self.qty
+        }
+
 
 class Kart(Base):
     __tablename__ = "kart"
