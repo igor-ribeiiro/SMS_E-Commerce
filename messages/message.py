@@ -19,5 +19,5 @@ class message:
     def give_time_estimate(self, time):
         return f"Muito obrigado pelo pedido! Ele estará na sua casa em torno de {str(time)} minutos"
 
-    def confirm_products_message():
+    def confirm_products_message(self):
         pass
