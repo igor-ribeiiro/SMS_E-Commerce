@@ -15,14 +15,22 @@ class MessagesManager:
         current_step = self.db.get_current_step()
 
         if current_step == 1:
+            self.db.create_user(self.client_number)
             return self.parse_message_from_step_1()
         elif current_step == 2:
-            self.db.update_address(self.client_number, self.client_message)
+            buscar_na_loja = False
+            if self.client_message == "s" or self.client_message == "sim":
+                buscar_na_loja = True
+
+            self.db.update_para_buscar_na_loja(buscar_na_loja)
             return MessageHandle.ask_for_address_msg()
         elif current_step == 3:
-            self.db.update_name(self.client_number, self.client_message)
+            self.db.update_address(self.client_number, self.client_message)
+
             return MessageHandle.ask_for_client_name()
         elif current_step == 4:
+            self.db.update_name(self.client_number, self.client_message)
+
             sms.send_sms(self.db.get_comerciante_phone_numer(), self.get_message_to_comerciante_4())
 
             if self.db.get_para_buscar_na_loja():

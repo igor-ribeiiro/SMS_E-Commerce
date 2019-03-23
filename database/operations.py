@@ -90,18 +90,18 @@ if __name__ == '__main__':
     # pprint(all_users)
     #
     # update_address(phone, "av bagulho eh loko")
-    # all_users = get_users()
-    # pprint(all_users)
+    all_users = get_users()
+    pprint(all_users)
 
     # print("Adding kart to user")
     # add_kart("+55 19 97103-7086", "kart dono", ["2 unit item cartas", "3 unit item z"])
 
-    print("Querying items")
+    # print("Querying items")
     # add_item("random123", 50, 9)
     # all_items = get_items()
     # pprint(all_items)
     # delete_item("random123", 3)
-    all_items = get_items()
-    print(all_items)
-    items = [item.as_dict() for item in all_items]
-    print(items)
+    # all_items = get_items()
+    # print(all_items)
+    # items = [item.as_dict() for item in all_items]
+    # print(items)
