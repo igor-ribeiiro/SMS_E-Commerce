@@ -1,4 +1,4 @@
-from database.operations import get_items, add_user, update_address, update_name, delete_item
+from database.operations import get_items, add_user, update_address, update_name, delete_item, get_user
 from pprint import pprint
 
 
@@ -31,8 +31,11 @@ class DB:
     def get_para_buscar_na_loja(self): # Retorna True ou False
         return True
 
-    def get_client_name(self):
-        return "Igor"
+    def get_client_name(self, phone):
+        return get_user(phone).name
+
+    def get_client_address(self, phone):
+        return get_user(phone).address
 
     def get_time_estimative(self):
         return 45

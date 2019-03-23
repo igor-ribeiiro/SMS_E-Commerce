@@ -10,7 +10,6 @@ def get_user(phone):
     session.close()
     return user
 
-
 def get_users():
     session = SQLManager().get_session()
     users = session.query(User).all()
