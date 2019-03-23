@@ -9,7 +9,7 @@ sms = SMS()
 def main():
     return "what's up nigga"
 
-@app.route("/sms")
+@app.route("/sms", methods=['GET', 'POST'])
 def sms_reply():
     """Respond to incoming messages with a friendly SMS."""
     message = "Reply message test"
