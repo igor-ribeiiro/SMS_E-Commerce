@@ -66,5 +66,5 @@ if __name__ == '__main__':
 
     print("Querying items")
     add_item("detergente", 50, 9)
-    all_items = get_items()
-    pprint(all_items)
+    # all_items = get_items()
+    # pprint(all_items)
