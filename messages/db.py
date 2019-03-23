@@ -31,7 +31,7 @@ class DB:
         pass
 
     def get_para_buscar_na_loja(self): # Retorna True ou False
-        return False
+        return True
 
     def get_client_name(self):
         return "Igor"
