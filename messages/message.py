@@ -10,5 +10,14 @@ class message:
             price += item.get_total_price()
         return price
 
-    def confirm_products_message()
-    
+    def ask_for_address_msg(self):
+        return "Qual o seu endereço?"
+
+    def ask_for_client_name(self):
+        return "Por favor, pode me dizer qual o seu nome?"
+
+    def give_time_estimate(self, time):
+        return f"Muito obrigado pelo pedido! Ele estará na sua casa em torno de {str(time)} minutos"
+
+    def confirm_products_message(self):
+        pass
