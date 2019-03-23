@@ -63,17 +63,17 @@ def get_items():
     return response
 
 
-def delete_item(name):
+def delete_item(name, qty):
     session = SQLManager().get_session()
     response = session.query(Item).filter_by(name=name).first()
-    session.delete(response)
+    response.qty = max(0, response.qty - qty)
     session.commit()
     session.close()
 
 
-def add_item(name, qty, price):
+def add_item(name, price, qty):
     session = SQLManager().get_session()
-    item = Item(name, qty, price)
+    item = Item(name, price, qty)
     session.add(item)
     session.commit()
     session.close()
@@ -98,9 +98,9 @@ if __name__ == '__main__':
     # add_kart("+55 19 97103-7086", "kart dono", ["2 unit item cartas", "3 unit item z"])
 
     print("Querying items")
-    # add_item("detergente", 50, 9)
-    all_items = get_items()
-    pprint(all_items)
-    delete_item("detergente")
+    # add_item("random123", 50, 9)
+    # all_items = get_items()
+    # pprint(all_items)
+    # delete_item("random123", 3)
     all_items = get_items()
     pprint(all_items)

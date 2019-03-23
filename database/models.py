@@ -40,13 +40,13 @@ class Item(Base):
     qty = Column(Integer, unique=False, nullable=False)
     price = Column(Integer, unique=False, nullable=False)
 
-    def __init__(self, name, qty, price):
+    def __init__(self, name, price, qty):
         self.name = name
-        self.qty = qty
         self.price = price
+        self.qty = qty
 
     def __repr__(self):
-        return "name {0}, price {1}, qty {2}".format(self.name, self.qty, self.price)
+        return "name {0}, price {1}, qty {2}".format(self.name, self.price, self.qty)
 
 
 class Kart(Base):

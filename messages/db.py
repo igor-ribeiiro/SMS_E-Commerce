@@ -1,4 +1,4 @@
-from database.operations import get_items, add_user, update_address, update_name
+from database.operations import get_items, add_user, update_address, update_name, delete_item
 from pprint import pprint
 
 
@@ -13,8 +13,8 @@ class DB:
     def get_current_step(self): #para dado phone
         return 4
 
-    def remove_product_from_db(self, id, qty): #nome, qty
-        pass
+    def remove_product_from_db(self, id, name, qty): #nome, qty
+        delete_item("detergente", 3)
 
     def update_address(self, phone, address): #phone, address
         update_address(phone, address)
