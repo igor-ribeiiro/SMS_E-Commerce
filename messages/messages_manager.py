@@ -1,7 +1,9 @@
 from messages.message_handle import MessageHandle
 from messages.string_mathing import StringMathing
 from messages.db import DB
+from messages.sms import SMS
 
+sms = SMS()
 
 class MessagesManager:
     def __init__(self, client_number, client_message):
@@ -21,9 +23,24 @@ class MessagesManager:
             self.db.save_client_name(self.client_message)
             return MessageHandle.ask_for_client_name()
         elif current_step == 4:
-            return MessageHandle.give_time_estimate(self.db.get_time_estimative())
+            sms.send_sms(self.db.get_comerciante_phone_numer(), self.get_message_to_comerciante_4())
+
+            if self.db.get_para_buscar_na_loja():
+                return MessageHandle.say_your_pedido_is_ready()
+            else:
+                return MessageHandle.give_time_estimate(self.db.get_time_estimative())
         else:
             print(f"Error: receive current_step = {current_step} not between 1 and 4")
+
+    def get_message_to_comerciante_4(self):
+        client_name = self.db.get_client_name()
+        message = f"Compra realizada pelo cliente {client_name}.\n"
+        if self.db.get_para_buscar_na_loja():
+            message += "Cliente irá buscar na loja.\n"
+        else:
+            message += "Pedido para entregar no endereço: " + self.db.get_address() + ".\n"
+        message += "Favor, consultar plataforma virtual para ver os produtos pedidos."
+        return message
 
     def parse_message_from_step_1(self):
         client_items = self.client_message.split(",")
