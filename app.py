@@ -11,7 +11,7 @@ def main():
     return "what's up nigga"
 
 
-@app.route("/shelf")
+@app.route("/shelf", methods=["GET", "POST"])
 def shelf():
     try:
         all_items = get_items()
