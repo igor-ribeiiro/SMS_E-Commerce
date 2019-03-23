@@ -12,7 +12,7 @@ class MessagesManager:
         self.db = DB(client_number, client_message)
 
     def get_message_to_be_sent(self):
-        current_step = self.db.get_current_step()
+        current_step = self.db.get_current_step(self.client_number)
 
         if current_step == 1:
             # self.db.create_user(self.client_number)

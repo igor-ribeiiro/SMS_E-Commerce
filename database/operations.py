@@ -133,10 +133,10 @@ def add_item(name, price, qty):
 
 if __name__ == '__main__':
     # print("Querying users")
-    phone = "01012093"
-    add_user("Igor Bragaia", "Rua H8A, apt 121", phone)
-    all_users = get_users()
-    pprint(all_users)
+    phone = "+5585999911065"
+    # add_user("Igor Bragaia", "Rua H8A, apt 121", phone)
+    # all_users = get_users()
+    # pprint(all_users)
 
     # update_name(phone, "aha")
     # all_users = get_users()
