@@ -65,8 +65,9 @@ class MessagesManager:
             price_str = f', preço = {price:.2f} confirmado,\n'
             return_message += f'{qty} '+ closest_item_from_stock.name + price_str
 
-            self.db.remove_product_from_db(closest_item_from_stock.id, qty)
+            self.db.remove_product_from_db(closest_item_from_stock.name, qty)
 
+        self.db.save_carrinho(items)
         return_message = return_message[:-2]
         return_message += f'.\n\nPreço total = {total_price:.2f} reais\n'
         return_message += "Deixa separado ou entrega em casa?"
