@@ -15,11 +15,12 @@ class MessagesManager:
         current_step = self.db.get_current_step()
 
         if current_step == 1:
-            self.db.create_user(self.client_number)
+            # self.db.create_user(self.client_number)
             return self.parse_message_from_step_1()
         elif current_step == 2:
             buscar_na_loja = False
-            if self.client_message == "s" or self.client_message == "sim":
+            if StringMathing.similar(self.client_message, "loja") >= 0.5 or \
+                StringMathing.similar(self.client_message, "Pegar na loja") >= 0.5:
                 buscar_na_loja = True
 
             self.db.update_para_buscar_na_loja(buscar_na_loja)

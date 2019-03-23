@@ -11,7 +11,7 @@ class DB:
         return get_items()
 
     def get_current_step(self): #para dado phone
-        return 2
+        return 1
 
     def save_carrinho(self, phone, items, price): #items = ["string1", "string2", "string2"]
         add_kart(phone, items, price)
