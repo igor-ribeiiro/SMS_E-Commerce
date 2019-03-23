@@ -19,7 +19,7 @@ class DB:
 
     def save_carrinho(self, phone, items, price): #items = ["string1", "string2", "string2"]
         print(f"phone = {phone}")
-        add_kart(phone, items, price)
+        add_kart(phone, price, items)
 
     def remove_product_from_db(self, name, qty): #nome, qty
         delete_item(name, qty)

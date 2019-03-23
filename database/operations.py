@@ -19,10 +19,14 @@ def get_users():
 
 def add_user(name, phone, address):
     session = SQLManager().get_session()
-    user = User(name, address, phone)
-    session.add(user)
-    session.commit()
-    session.close()
+    try:
+        user = User(name, address, phone)
+        session.add(user)
+        session.commit()
+    except:
+        pass
+    finally:
+        session.close()
 
 
 def update_name(phone, name):
