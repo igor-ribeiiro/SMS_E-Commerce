@@ -151,10 +151,10 @@ if __name__ == '__main__':
     # all_users = get_users()
     # pprint(all_users)
 
-    print("Adding kart to user")
-    add_kart(phone, 123, ["2 unit item cartas", "3 unit item z"])
-    all_users = get_users()
-    pprint(all_users)
+    # print("Adding kart to user")
+    # add_kart(phone, 123, ["2 unit item cartas", "3 unit item z"])
+    # all_users = get_users()
+    # pprint(all_users)
 
     # step = update_step(phone)
     # all_users = get_users()
@@ -176,12 +176,15 @@ if __name__ == '__main__':
     # all_users = get_users()
     # pprint(all_users)
 
-    close_kart(phone)
+    # close_kart(phone)
     # all_users = get_users()
     # pprint(all_users)
 
     # print("Querying items")
-    # add_item("random1", 50, 9)
+    add_item("detegente", 5, 90)
+    add_item("coca-cola", 4, 90)
+    add_item("patinho", 12, 90)
+
     # all_items = get_items()
     # pprint(all_items)
     # delete_item("random1", 3)
