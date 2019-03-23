@@ -11,7 +11,7 @@ class DB:
         return get_items()
 
     def get_current_step(self): #para dado phone
-        return 1
+        return 4
 
     def remove_product_from_db(self, id, qty): #nome, qty
         pass
@@ -21,6 +21,9 @@ class DB:
 
     def save_client_name(self, name): #phone, name
         pass
+
+    def get_time_estimative(self):
+        return 45
 
 if __name__ == '__main__':
     print("Querying items")
