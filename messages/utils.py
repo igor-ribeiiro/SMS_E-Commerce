@@ -6,7 +6,7 @@ from messages.db import DB
 
 url = "http://localhost:5000/sms"   
 
-gambi = 2
+gambi = 1
 
 body = "error"
 if gambi == 1:
