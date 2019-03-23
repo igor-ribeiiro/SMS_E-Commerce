@@ -66,13 +66,26 @@ def close_kart(phone):
     session.commit()
     session.close()
 
-def _kart(phone):
+
+def update_buscar_na_loja(phone, buscar_na_loja):
     session = SQLManager().get_session()
 
     user = session.query(User).filter_by(phone=phone).first()
 
     last_kart = session.query(Kart).filter_by(user_id=user.id, finished=0).order_by('date').first()
-    last_kart.finished = 1
+    last_kart.buscar_na_loja = buscar_na_loja
+
+    session.commit()
+    session.close()
+
+
+def update_step(phone):
+    session = SQLManager().get_session()
+
+    user = session.query(User).filter_by(phone=phone).first()
+
+    last_kart = session.query(Kart).filter_by(user_id=user.id, finished=0).order_by('date').first()
+    last_kart.step += 1
 
     session.commit()
     session.close()
@@ -104,9 +117,9 @@ def add_item(name, price, qty):
 if __name__ == '__main__':
     # print("Querying users")
     phone = "01012093"
-    # add_user("Igor Bragaia", "Rua H8A, apt 121", phone)
-    # all_users = get_users()
-    # pprint(all_users)
+    add_user("Igor Bragaia", "Rua H8A, apt 121", phone)
+    all_users = get_users()
+    pprint(all_users)
 
     # update_name(phone, "aha")
     # all_users = get_users()
@@ -120,10 +133,30 @@ if __name__ == '__main__':
     add_kart(phone, 123, ["2 unit item cartas", "3 unit item z"])
     all_users = get_users()
     pprint(all_users)
-    close_kart(phone)
+
+    update_step(phone)
     all_users = get_users()
     pprint(all_users)
 
+    update_step(phone)
+    all_users = get_users()
+    pprint(all_users)
+
+    update_step(phone)
+    all_users = get_users()
+    pprint(all_users)
+
+    update_step(phone)
+    all_users = get_users()
+    pprint(all_users)
+
+    update_buscar_na_loja(phone, 1)
+    all_users = get_users()
+    pprint(all_users)
+
+    close_kart(phone)
+    all_users = get_users()
+    pprint(all_users)
 
     # print("Querying items")
     # add_item("random1", 50, 9)

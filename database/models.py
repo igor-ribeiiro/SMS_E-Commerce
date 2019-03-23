@@ -84,5 +84,8 @@ class Kart(Base):
         return {
             "order": self.order,
             "price": self.price,
+            "buscar_na_loja": self.buscar_na_loja,
+            "step": self.step,
+            "finished": self.finished,
             "date": datetime.timestamp(self.date)
         }
