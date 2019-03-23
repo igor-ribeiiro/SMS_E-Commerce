@@ -22,7 +22,7 @@ class User(Base):
         self.karts = []
 
     def __repr__(self):
-        return "name {0}, phone {1}, address {2}, karts {3}".format(self.name, self.address, self.phone, self.karts)
+        return "name {0}, phone {1}, address {2}, karts {3}".format(self.name, self.phone, self.address, self.karts)
 
     def as_dict(self):
         return {

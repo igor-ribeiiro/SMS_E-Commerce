@@ -1,6 +1,6 @@
-from messages.item import Item
-from database.operations import get_items
+from database.operations import get_items, add_user, update_address, update_name
 from pprint import pprint
+
 
 class DB:
     def __init__(self, client_number, client_message):
@@ -16,11 +16,15 @@ class DB:
     def remove_product_from_db(self, id, qty): #nome, qty
         pass
 
-    def save_address(self, address): #phone, address
-        pass
+    def update_address(self, phone, address): #phone, address
+        update_address(phone, address)
 
-    def save_client_name(self, name): #phone, name
-        pass
+    def update_name(self, phone, name): #phone, name
+        update_name(phone, name)
+
+    def create_user(self, phone):
+        add_user("", phone, "")
+
 
 if __name__ == '__main__':
     print("Querying items")
