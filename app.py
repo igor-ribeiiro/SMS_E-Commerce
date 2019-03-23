@@ -13,12 +13,14 @@ def main():
 
 @app.route("/shelf", methods=["GET", "POST"])
 def shelf():
+    print("gogo")
     try:
         all_items = get_items()
         print(all_items)
         items = [item.as_dict() for item in all_items]
         return jsonify(result=items)
-    except:
+    except Exception as E:
+        print(E)
         return jsonify(result=[])
 
 
