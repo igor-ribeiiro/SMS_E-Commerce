@@ -15,7 +15,9 @@ class MessagesManager:
         print("")
 
         if current_step == 1:
-            self.parse_message_from_step_1()
+            message = self.parse_message_from_step_1()
+            print("Message = ")
+            print(message)
             return "Nothing"
         elif current_step == 2:
             return MessageHandle.ask_for_address_msg()
@@ -32,7 +34,7 @@ class MessagesManager:
     def get_stock(self):
         item1 = Item(name="coca-cola", qtd=4, price=4)
         item2 = Item(name="guarana", qtd=3, price=5)
-        item3 = Item(name="refri", qtd=6, price=3.5)
+        item3 = Item(name="refrigerante", qtd=6, price=3.5)
         stock = [item1, item2, item3]
 
         return stock
@@ -42,22 +44,30 @@ class MessagesManager:
         stock = self.get_stock()
         string_mathing = StringMathing(stock)
 
+        return_message = ""
+        items = []
         for client_item in client_items:
             client_item = client_item.lstrip()
-            print(f"On client_item = {client_item}")
+            # print(f"On client_item = {client_item}")
             item = client_item.split(" ")
             qtd = item[0]
             name = item[1]
 
-            print(f"Reading name = {name} and qtd = {qtd}")
+            # print(f"Reading name = {name} and qtd = {qtd}")
 
-            closest_from_stock = string_mathing.get_closest_item_from_string(name)
-            print(f"Closest from stock = {closest_from_stock.name}")
-            print("")
+            closest_item_from_stock = string_mathing.get_closest_item_from_string(name)
+            # print(f"Closest from stock = {closest_item_from_stock.name}")
+            # print("")
 
+            items.append(closest_item_from_stock)
+            return_message += str(qtd) + " " + closest_item_from_stock.name + ' confirmado, '
+
+        return_message = return_message[:-2]
+        return_message += f'.\n\nPreço total = {(MessageHandle.get_total_price(items)):.2f} reais\n'
+        return_message += "Deixa separado ou entrega em casa?"
+        return return_message
 
 if __name__ == "__main__":
-    message = "5 coca, 3 guarana, 7 refrigerante"
+    message = "5 coca, 3 guarana, 7 refri"
     messages_manager = MessagesManager("my-number", message)
     messages_manager.get_message_to_be_sent()
-

@@ -1,14 +1,15 @@
 class MessageHandle:
-    def __init__(self, client_name, items, address=None):
+    def __init__(self, client_name, items=None, address=None):
         self.client_name = client_name
         self.items = items
         self.address = address
 
-    def get_total_price(self):
+    @staticmethod
+    def get_total_price(items):
         price = 0
-        for item in self.items:
+        for item in items:
             price += item.get_total_price()
-        return price
+        return round(price, 2)
 
     @staticmethod
     def ask_for_address_msg():
