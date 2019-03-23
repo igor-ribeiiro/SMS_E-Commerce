@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 sms = SMS()
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def main():
     return "what's up nigga"
 
@@ -14,7 +14,9 @@ def main():
 @app.route("/shelf")
 def shelf():
     try:
-        items = [item.as_dict() for item in get_items()]
+        all_items = get_items()
+        print(all_items)
+        items = [item.as_dict() for item in all_items]
         return jsonify(result=items)
     except:
         return jsonify(result=[])
