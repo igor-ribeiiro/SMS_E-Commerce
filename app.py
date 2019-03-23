@@ -11,7 +11,7 @@ def main():
     return "what's up nigga"
 
 
-@app.route("/sms", methods=['GET', 'POST'])
+@app.route("/sms", methods=['POST'])
 def sms_reply():
     """Respond to incoming messages with a friendly SMS."""
     sent_message = request.form['Body']

@@ -2,9 +2,9 @@ import urllib.request
 import urllib.parse      
 
 url = "http://localhost:5000/sms"   
-params = {"param1": "arg1",
-            "param2": "arg2",       
-            "param3": "arg3"   
+params = {"Body": "body fuck",
+            "SmsMessageSid": "sid fuck",       
+            "From": "from who?"   
 }      
 
 query_string = urllib.parse.urlencode(params)   
