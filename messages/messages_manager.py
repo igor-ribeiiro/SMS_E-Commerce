@@ -21,7 +21,7 @@ class MessagesManager:
             self.db.save_client_name(self.client_message)
             return MessageHandle.ask_for_client_name()
         elif current_step == 4:
-            return MessageHandle.give_time_estimate(self.client_message)
+            return MessageHandle.give_time_estimate(self.db.get_time_estimative())
         else:
             print(f"Error: receive current_step = {current_step} not between 1 and 4")
 
