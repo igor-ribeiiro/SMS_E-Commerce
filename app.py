@@ -10,9 +10,9 @@ def main():
     return "what's up nigga"
 
 @app.route("/sms", methods=['GET', 'POST'])
-def sms_reply():
+def sms_reply(request):
     """Respond to incoming messages with a friendly SMS."""
-    message = "Reply message test"
+    message = f"Replying to your message bitch, with request = {str(request)}"
 
     return sms.reply_sms(message)
 
