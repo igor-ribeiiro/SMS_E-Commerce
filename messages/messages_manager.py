@@ -40,11 +40,13 @@ class MessagesManager:
 
         return_message = "\n"
         items = []
+        total_price = 0
+
         for client_item in client_items:
             client_item = client_item.lstrip()
             # print(f"On client_item = {client_item}")
             item = client_item.split(" ")
-            qtd = item[0]
+            qtd = int(item[0])
             name = item[1]
 
             # print(f"Reading name = {name} and qtd = {qtd}")
@@ -54,10 +56,14 @@ class MessagesManager:
             # print("")
 
             items.append(closest_item_from_stock)
-            return_message += str(qtd) + " " + closest_item_from_stock.name + ' confirmado,\n'
+
+            price = qtd*closest_item_from_stock.price
+            total_price += price
+            price_str = f', preço = {price:.2f} confirmado,\n'
+            return_message += f'{qtd} '+ closest_item_from_stock.name + price_str
 
         return_message = return_message[:-2]
-        return_message += f'.\n\nPreço total = {(MessageHandle.get_total_price(items)):.2f} reais\n'
+        return_message += f'.\n\nPreço total = {total_price:.2f} reais\n'
         return_message += "Deixa separado ou entrega em casa?"
         return return_message
 
